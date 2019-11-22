@@ -18,6 +18,11 @@ public class Sale {
         this.items = new ArrayList<>();
     }
 
+    public void addItem(Item item) {
+        this.items.add(item);
+        this.totalValue = this.totalValue.add(item.getItemValue());
+    }
+
     /**
      * @return the totalValue
      */
