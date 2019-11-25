@@ -12,5 +12,9 @@ public interface Discount {
     void setNext(Discount discount);
 
     BigDecimal calculate(Sale sale);
+
+    default void printDiscount() {
+        System.out.println("Aplicando desconto: " + getClass().getSimpleName());
+    }
     
 }

@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 import com.luizjacomn.chain.models.Sale;
 
 /**
- * MoreThanThreeItems
+ * MoreThenFiveItemsAndMoreThanFiveHundred
  */
-public class MoreThanThreeItems implements Discount {
+public class MoreThenFiveItemsAndMoreThanFiveHundred implements Discount {
 
     private Discount next;
 
@@ -19,13 +19,13 @@ public class MoreThanThreeItems implements Discount {
     @Override
     public BigDecimal calculate(Sale sale) {
         BigDecimal totalValue = sale.getTotalValue();
-        
-        if (sale.getItems().size() >= 3) {
+
+        if (sale.getItems().size() >= 5 && totalValue.compareTo(BigDecimal.valueOf(500.0)) >= 0) {
             printDiscount();
-            return totalValue.multiply(BigDecimal.valueOf(0.02));
+            return totalValue.multiply(BigDecimal.valueOf(0.04));
         }
 
         return next.calculate(sale);
     }
-
+    
 }

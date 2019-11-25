@@ -6,6 +6,7 @@ import com.luizjacomn.chain.discounts.Discount;
 import com.luizjacomn.chain.discounts.MoreThanOneHundredValue;
 import com.luizjacomn.chain.discounts.MoreThanOneThousandValue;
 import com.luizjacomn.chain.discounts.MoreThanThreeItems;
+import com.luizjacomn.chain.discounts.MoreThenFiveItemsAndMoreThanFiveHundred;
 import com.luizjacomn.chain.discounts.WithoutDiscount;
 import com.luizjacomn.chain.models.Item;
 import com.luizjacomn.chain.models.Sale;
@@ -18,17 +19,20 @@ public class App {
         Sale sale = new Sale();
         Discount threeItems = new MoreThanThreeItems();
         Discount oneHundred = new MoreThanOneHundredValue();
+        Discount fiveAndFive = new MoreThenFiveItemsAndMoreThanFiveHundred();
         Discount oneThousand = new MoreThanOneThousandValue();
         Discount without = new WithoutDiscount();
 
         sale.addItem(new Item("Tenis", 270.0));
         sale.addItem(new Item("Sapato", 350.0));
         sale.addItem(new Item("Camisa", 200.0));
-        sale.addItem(new Item("Calça", 180.0));
+        // sale.addItem(new Item("Calça", 70.0));
+        // sale.addItem(new Item("Boné", 60.0));
 
         threeItems.setNext(without);
         oneHundred.setNext(threeItems);
-        oneThousand.setNext(oneHundred);
+        fiveAndFive.setNext(oneHundred);
+        oneThousand.setNext(fiveAndFive);
 
         BigDecimal discount = oneThousand.calculate(sale);
 

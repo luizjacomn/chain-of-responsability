@@ -21,6 +21,7 @@ public class MoreThanOneHundredValue implements Discount {
         BigDecimal totalValue = sale.getTotalValue();
         
         if (totalValue.compareTo(new BigDecimal("100")) >= 0) {
+            printDiscount();
             return totalValue.multiply(BigDecimal.valueOf(0.03));
         }
         

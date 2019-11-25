@@ -16,6 +16,7 @@ public class WithoutDiscount implements Discount {
 
     @Override
     public BigDecimal calculate(Sale sale) {
+        printDiscount();
         return BigDecimal.ZERO;
     }
 
